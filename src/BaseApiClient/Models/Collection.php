@@ -45,9 +45,6 @@ class Collection implements JsonSerializable, ArrayAccess, IteratorAggregate
      */
     public function __construct($items, $model)
     {
-        // Set model with namespace
-        $model = "\\App\\Support\\BlogManager\\Models\\{$model}";
-
         // Ensure model exists
         if (class_exists($model) === false) {
             throw new InvalidModelException;

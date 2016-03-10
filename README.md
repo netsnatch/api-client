@@ -49,8 +49,9 @@ From the endpoint we make our API calls and return the models.
 namespace App\BlogApi\Endpoints;
 
 use App\BlogApi\Models\Post;
+
+use BaseApiClient\Endpoint;
 use BaseApiClient\Models\Collection;
-use BaseApiClient\Endpoints\Endpoint;
 
 class Posts extends Endpoint
 {
@@ -258,6 +259,10 @@ class BlogController extends Controller
 ```
 
 ## Change Log
+
+**0.1.1**
+
+- Bug fixes
 
 **0.1.0**
 

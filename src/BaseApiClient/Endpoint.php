@@ -1,10 +1,10 @@
 <?php
 
-namespace BaseApiClient\Endpoints;
+namespace BaseApiClient;
 
 use BaseApiClient\Transport\Request;
 
-class Endpoint
+abstract class Endpoint
 {
     /**
      * Instance of the request class
