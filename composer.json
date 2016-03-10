@@ -1,0 +1,31 @@
+{
+  "name": "torann/api-client",
+  "description": "A reusable base API client for use with remote services.",
+  "keywords": ["laravel","api","curl","api client","base64 image"],
+  "license": "BSD 2-Clause",
+  "authors": [
+    {
+      "name": "Daniel Stainback",
+      "email": "daniel@lyften.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "illuminate/support": "5.1.*|5.2.*",
+    "illuminate/pagination": "5.1.*|5.2.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "mockery/mockery": "^0.9.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "BaseApiClient\\": "src/BaseApiClient"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
+}
