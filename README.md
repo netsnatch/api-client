@@ -1,6 +1,11 @@
 # Base API Client
 
+[![Latest Stable Version](https://poser.pugx.org/torann/api-client/v/stable.png)](https://packagist.org/packages/torann/api-client) [![Total Downloads](https://poser.pugx.org/torann/api-client/downloads.png)](https://packagist.org/packages/torann/api-client)
+
 A reusable base API client for use with remote services.
+
+- [Base API Client on Packagist](https://packagist.org/packages/torann/api-client)
+- [Base API Client on GitHub](https://github.com/Torann/api-client)
 
 ## Installation
 
