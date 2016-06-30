@@ -93,7 +93,7 @@ class Request
      */
     public function delete($endpoint, array $parameters = [])
     {
-        return $this->execute('DELETE', sprintf('%s%s', $this->host, $endpoint) . '/', $parameters);
+        return $this->execute('DELETE', sprintf('%s%s', $this->host, $endpoint), $parameters);
     }
 
     /**
@@ -106,7 +106,7 @@ class Request
      */
     public function put($endpoint, array $parameters = [])
     {
-        return $this->execute('PUT', sprintf('%s%s', $this->host, $endpoint) . '/', $parameters);
+        return $this->execute('PUT', sprintf('%s%s', $this->host, $endpoint), $parameters);
     }
 
     /**
@@ -119,7 +119,7 @@ class Request
      */
     public function patch($endpoint, array $parameters = [])
     {
-        return $this->execute('PATCH', sprintf('%s%s', $this->host, $endpoint) . '/', $parameters);
+        return $this->execute('PATCH', sprintf('%s%s', $this->host, $endpoint), $parameters);
     }
 
     /**
