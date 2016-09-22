@@ -63,11 +63,11 @@ class Response
      *
      * @param  string $key
      *
-     * @return array
+     * @return array|null
      */
     public function __get($key)
     {
-        return $this->__isset($key) ? $this->response[$key] : [];
+        return $this->__isset($key) ? $this->response[$key] : null;
     }
 
     /**
