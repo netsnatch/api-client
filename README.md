@@ -1,6 +1,11 @@
 # Base API Client
 
-[![Latest Stable Version](https://poser.pugx.org/torann/api-client/v/stable.png)](https://packagist.org/packages/torann/api-client) [![Total Downloads](https://poser.pugx.org/torann/api-client/downloads.png)](https://packagist.org/packages/torann/api-client)
+[![Latest Stable Version](https://poser.pugx.org/torann/api-client/v/stable.png)](https://packagist.org/packages/torann/api-client)
+[![Total Downloads](https://poser.pugx.org/torann/api-client/downloads.png)](https://packagist.org/packages/torann/api-client)
+[![Patreon donate button](https://img.shields.io/badge/patreon-donate-yellow.svg)](https://www.patreon.com/torann)
+[![Donate weekly to this project using Gratipay](https://img.shields.io/badge/gratipay-donate-yellow.svg)](https://gratipay.com/~torann)
+[![Donate to this project using Flattr](https://img.shields.io/badge/flattr-donate-yellow.svg)](https://flattr.com/profile/torann)
+[![Donate to this project using Paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4CJA2A97NPYVU)
 
 A reusable base API client for use with remote services.
 
@@ -259,6 +264,22 @@ class BlogController extends Controller
 ```
 
 ## Change Log
+
+**0.2.0**
+
+- Add support for Laravel 5.4
+
+**0.1.4**
+
+- Return null for empty values
+
+**0.1.3**
+
+- Add support for Laravel 5.3
+
+**0.1.2**
+
+- Remove trailing slash
 
 **0.1.1**
 

@@ -7,7 +7,7 @@ use BaseApiClient\HttpClient\Curl;
 use Illuminate\Routing\UrlGenerator;
 use BaseApiClient\Exceptions\ApiException;
 use Illuminate\Http\Request as LaravelRequest;
-use Illuminate\Http\Exception\HttpResponseException;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class Request
 {
