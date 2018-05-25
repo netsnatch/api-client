@@ -132,67 +132,10 @@ class Post extends Model
 ## Registering Our Clients
 
 ```php
-<?php
-
-namespace App\Providers;
-
-use App\BlogApi\Client;
-use App\AnotherApi\Client;
-use Illuminate\Support\ServiceProvider;
-
-class AppServiceProvider extends ServiceProvider
-{
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        $this->registerBlogService();
-        $this->registerAnotherService();
-    }
-
-    /**
-     * Register blog manager services.
-     *
-     * @return void
-     */
-    public function registerBlogService()
-    {
-        $this->app->bind(Client::class, function () {
-            return new Client([
-                'domain' => 'http://some.fancy.ip/',
-                'secret' => env('BLOG_MANAGER_API_SECRET'),
-            ]);
-        });
-    }
-
-    /**
-     * Register blog manager services.
-     *
-     * @return void
-     */
-    public function registerAnotherService()
-    {
-        $this->app->bind(Client::class, function () {
-            return new Client([
-                'domain' => 'http://some.fancy.ip/',
-                'secret' => env('ANOTHER_API_SECRET'),
-            ]);
-        });
-    }
-}
+	new Client([
+		'domain' => 'http://some.fancy.ip/',
+		'secret' => env('BLOG_MANAGER_API_SECRET'),
+	]);
 ```
 
 ## Calling an Endpoint
@@ -205,7 +148,6 @@ Below is an example of using our `\App\BlogApi\Client` inside of a controller.
 namespace App\Http\Controllers;
 
 use App\BlogApi\Client;
-use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
@@ -228,30 +170,11 @@ class BlogController extends Controller
         $this->client = $client;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         $posts = $this->client->posts->index($request->only('page'));
-
-        return view('posts.index')->with([
-            'posts' => $posts->paginate()
-        ]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  Request $request
-     * @param  string  $slug
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show(Request $request, $slug)
     {
         $post = $this->client->posts->find($slug);
@@ -265,17 +188,9 @@ class BlogController extends Controller
 
 ## Change Log
 
-**0.2.0**
-
-- Add support for Laravel 5.4
-
 **0.1.4**
 
 - Return null for empty values
-
-**0.1.3**
-
-- Add support for Laravel 5.3
 
 **0.1.2**
 

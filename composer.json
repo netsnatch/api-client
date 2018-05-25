@@ -1,7 +1,7 @@
 {
   "name": "torann/api-client",
   "description": "A reusable base API client for use with remote services.",
-  "keywords": ["laravel","api","curl","api client","base64 image"],
+  "keywords": ["api","curl","api client","base64 image"],
   "license": "BSD 2-Clause",
   "authors": [
     {
@@ -11,8 +11,6 @@
   ],
   "require": {
     "php": ">=5.5.9",
-    "illuminate/support": "~5.4",
-    "illuminate/pagination": "~5.4",
     "symfony/http-kernel": "~3.2"
   },
   "require-dev": {

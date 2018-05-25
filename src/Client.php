@@ -2,7 +2,7 @@
 
 namespace BaseApiClient;
 
-use Illuminate\Support\Str;
+use BaseApiClient\Str;
 use BaseApiClient\HttpClient\Curl;
 use BaseApiClient\Transport\Request;
 use BaseApiClient\Exceptions\InvalidEndpointException;

@@ -2,12 +2,8 @@
 
 namespace BaseApiClient\Transport;
 
-use Illuminate\Http\JsonResponse;
 use BaseApiClient\HttpClient\Curl;
-use Illuminate\Routing\UrlGenerator;
 use BaseApiClient\Exceptions\ApiException;
-use Illuminate\Http\Request as LaravelRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class Request
 {
@@ -142,7 +138,7 @@ class Request
      *
      * @return Response
      *
-     * @throws ApiException|HttpResponseException
+     * @throws ApiException
      */
     public function execute($method, $url, array $parameters = [], $headers = [])
     {
@@ -159,10 +155,6 @@ class Request
 
         // Check the response code
         if ($response->getResponseCode() >= 400) {
-            if ($response->getResponseCode() === 400) {
-                $this->throwValidationException($response);
-            }
-
             throw new ApiException($response->message, $response->getResponseCode());
         }
 
@@ -171,51 +163,5 @@ class Request
 
         // Return the response
         return $response;
-    }
-
-    /**
-     * Throw the failed validation exception.
-     *
-     * @param  Response $response
-     *
-     * @throws HttpResponseException
-     */
-    protected function throwValidationException(Response $response)
-    {
-        // Get laravel request
-        $request = app(LaravelRequest::class);
-
-        // Translate errors
-        $errors = $response->errors;
-        foreach ($errors as $attr => $messages) {
-            $errors[$attr] = array_map(function ($error) use ($attr) {
-                return trans($error, ['attribute' => $attr]);
-            }, $messages);
-        }
-
-        // Return response
-        if ($request->ajax() || $request->wantsJson()) {
-            $response = new JsonResponse([
-                'message' => trans('validation.validation_failed'),
-                'errors' => $errors,
-            ], 400);
-        }
-        else {
-            $response = redirect()->to($this->getRedirectUrl())
-                ->withInput($request->input())
-                ->withErrors($errors);
-        }
-
-        throw new HttpResponseException($response);
-    }
-
-    /**
-     * Get the URL we should redirect to.
-     *
-     * @return string
-     */
-    protected function getRedirectUrl()
-    {
-        return app(UrlGenerator::class)->previous();
     }
 }

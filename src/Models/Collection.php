@@ -7,10 +7,8 @@ use ArrayAccess;
 use ArrayIterator;
 use JsonSerializable;
 use IteratorAggregate;
-use Illuminate\Support\Str;
 use BaseApiClient\Transport\Response;
 use BaseApiClient\Exceptions\InvalidModelException;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class Collection implements JsonSerializable, ArrayAccess, IteratorAggregate
 {
@@ -82,23 +80,6 @@ class Collection implements JsonSerializable, ArrayAccess, IteratorAggregate
         }
 
         return $total;
-    }
-
-    /**
-     * Return Laravel pagination instance.
-     *
-     * @return LengthAwarePaginator
-     */
-    public function paginate()
-    {
-        return new LengthAwarePaginator(
-            $this->items,
-            $this->getMeta('pagination.total'),
-            $this->getMeta('pagination.per_page'),
-            $this->getMeta('pagination.current_page'), [
-                'path' => LengthAwarePaginator::resolveCurrentPath()
-            ]
-        );
     }
 
     /**

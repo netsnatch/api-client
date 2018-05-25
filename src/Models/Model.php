@@ -6,7 +6,7 @@ use DateTime;
 use Carbon\Carbon;
 use JsonSerializable;
 use BaseApiClient\Media;
-use Illuminate\Support\Str;
+use BaseApiClient\Str;
 use BaseApiClient\Transport\Response;
 
 class Model implements JsonSerializable
