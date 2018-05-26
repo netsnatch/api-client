@@ -7,6 +7,7 @@ use ArrayAccess;
 use ArrayIterator;
 use JsonSerializable;
 use IteratorAggregate;
+use BaseApiClient\Arr;
 use BaseApiClient\Transport\Response;
 use BaseApiClient\Exceptions\InvalidModelException;
 
@@ -111,7 +112,7 @@ class Collection implements JsonSerializable, ArrayAccess, IteratorAggregate
      */
     public function getMeta($key, $default = null)
     {
-        return array_get($this->meta, $key, $default);
+        return Arr::get($this->meta, $key, $default);
     }
 
     /**
@@ -123,7 +124,7 @@ class Collection implements JsonSerializable, ArrayAccess, IteratorAggregate
      */
     public function setMeta($key, $value)
     {
-        return array_set($this->meta, $key, $value);
+        return Arr::set($this->meta, $key, $value);
     }
 
     /**
@@ -154,15 +155,7 @@ class Collection implements JsonSerializable, ArrayAccess, IteratorAggregate
      */
     public function __get($key)
     {
-        $value = array_key_exists($key, $this->meta) ? $this->meta[$key] : null;
-
-        // If the attribute has a present, we will call that then return what
-        // it returns as the value.
-        if ($this->hasPresenter($key)) {
-            return $this->presentAttribute($key, $value);
-        }
-
-        return $value;
+        return array_key_exists($key, $this->meta) ? $this->meta[$key] : null;
     }
 
     /**

@@ -2,7 +2,6 @@
 
 namespace BaseApiClient;
 
-use BaseApiClient\Str;
 use BaseApiClient\HttpClient\Curl;
 use BaseApiClient\Transport\Request;
 use BaseApiClient\Exceptions\InvalidEndpointException;
@@ -57,7 +56,7 @@ abstract class Client
     public function getEndpoint($endpoint)
     {
         // Create studly class name
-        $endpoint = Str::studly($endpoint);
+        $endpoint = Helpers::studly($endpoint);
 
         $class = "\\{$this->endpointNamespace}\\{$endpoint}";
 

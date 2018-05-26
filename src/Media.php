@@ -23,7 +23,7 @@ class Media
      *
      * @param array $media
      */
-    function __construct($media = [])
+    public function __construct($media = [])
     {
         $this->media = $media;
         $this->hasMedia = !empty($this->media);
@@ -39,6 +39,6 @@ class Media
      */
     public function url($size = 'original', $default = '')
     {
-        return array_get($this->media, $size, $default);
+        return Arr::get($this->media, $size, $default);
     }
 }

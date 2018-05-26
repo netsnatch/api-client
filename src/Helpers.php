@@ -2,7 +2,9 @@
 
 namespace BaseApiClient;
 
-class Str
+use Closure;
+
+class Helpers
 {
     /**
      * Convert a value to studly caps case.
@@ -16,4 +18,16 @@ class Str
 
         return str_replace(' ', '', $value);
     }
+
+    /**
+     * Return the default value of the given value.
+     *
+     * @param  mixed  $value
+     * @return mixed
+     */
+    public static function value($value)
+    {
+        return $value instanceof Closure ? $value() : $value;
+    }
+    
 }
