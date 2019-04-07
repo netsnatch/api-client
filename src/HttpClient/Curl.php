@@ -12,6 +12,18 @@ class Curl
      * @var int
      **/
     protected $http_code = 200;
+    
+    /**
+     * Connect timeout in milliseconds
+     * @var int
+     */
+    protected $connect_timeout = 2500;
+    
+    /**
+     * Execute timeout in milliseconds
+     * @var int
+     */
+    protected $timeout = 4000;
 
     /**
      * Last request error string.
@@ -30,6 +42,17 @@ class Curl
         'Accept: application/json',
     ];
 
+    public function __construct(array $config = [])
+    {
+        if (isset($config['connect_timeout'])) {
+            $this->connect_timeout = $config['connect_timeout'];
+        }
+        
+        if (isset($config['timeout'])) {
+            $this->timeout = $config['timeout'];
+        }
+    }
+    
     /**
      * Add multiple headers to request.
      *
@@ -76,8 +99,8 @@ class Curl
         curl_setopt_array($curl, [
             CURLOPT_URL => $url,
             CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_CONNECTTIMEOUT => 20,
-            CURLOPT_TIMEOUT => 90,
+            CURLOPT_CONNECTTIMEOUT => $this->connect_timeout,
+            CURLOPT_TIMEOUT => $this->timeout,
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_SSL_VERIFYHOST => 0,

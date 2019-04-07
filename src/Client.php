@@ -37,7 +37,7 @@ abstract class Client
      */
     public function __construct(array $config = [])
     {
-        $this->request = new Request($config['domain'], new Curl());
+        $this->request = new Request($config['domain'], new Curl($config));
 
         // Add client secret header
         if(isset($config['secret'])) {
