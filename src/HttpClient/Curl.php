@@ -2,8 +2,6 @@
 
 namespace BaseApiClient\HttpClient;
 
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 class Curl
 {
     /**
@@ -162,36 +160,7 @@ class Curl
      */
     protected function build_json_for_curl($params)
     {
-        $params = array_map(function($item) {
-            return ($item instanceof UploadedFile)
-                ? $this->base64EncodeImage($item)
-                : $item;
-        }, $params);
-
         return json_encode($params);
-    }
-
-    /**
-     * Base64 encode a file.
-     *
-     * Not a fan of this, but it will work for now at least.
-     * Look into implementing something like what Twitter has
-     * for uploading media.
-     *
-     * https://dev.twitter.com/rest/reference/post/media/upload
-     *
-     * @param UploadedFile $file
-     *
-     * @return array
-     */
-    protected function base64EncodeImage(UploadedFile $file)
-    {
-        $data = file_get_contents($file->getRealPath());
-
-        return [
-            'name' => $file->getClientOriginalName(),
-            'base64' => base64_encode($data),
-        ];
     }
 
     /**

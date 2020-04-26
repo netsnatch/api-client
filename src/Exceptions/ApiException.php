@@ -2,9 +2,7 @@
 
 namespace BaseApiClient\Exceptions;
 
-use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
-
-class ApiException extends \RuntimeException implements HttpExceptionInterface
+class ApiException extends \RuntimeException
 {
     private $statusCode;
 
